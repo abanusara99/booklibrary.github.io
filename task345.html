@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Add Book Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background-color: #e7b9fa;
+        }
+        form {
+            max-width: 500px;
+            margin: 0 auto;
+            background-color: #d9e9ff;
+            padding: 40px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        input[type="text"], select, textarea {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        input[type="date"] {
+            width: 50%;
+        }
+        input[type="radio"], input[type="checkbox"] {
+            margin-right: 5px;
+        }
+        textarea {
+            resize: vertical;
+            height: 100px;
+        }
+        input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+<!-- This is a Task 13 -->
+
+    <form id="bookForm">
+      <h2>BOOK FORM</h2>
+        <label for="name">Enter name:</label>
+        <input type="text" id="name" name="name" required>
+
+        <label for="author">Author:</label>
+        <input type="text" id="author" name="author" required>
+
+        <label for="language">Language:</label>
+        <select id="language" name="language" required>
+            <option value="Hindi">Hindi</option>
+            <option value="English">English</option>
+            <option value="Other">Other</option>
+        </select>
+
+        <label for="publishedDate">Published date:</label>
+        <input type="date" id="publishedDate" name="PublishedDate" required>
+        <br>
+      </br>
+        <label>Available:</label>
+        <input type="radio" id="availableYes" name="available" value="Yes" required>
+        <label for="availableYes">Yes</label>
+        <input type="radio" id="availableNo" name="available" value="No" required>
+        <label for="availableNo">No</label>
+
+        <label>Languages:</label>
+        <input type="checkbox" id="hindi" name="languages" value="Hindi">
+        <label for="hindi">Hindi</label>
+        <input type="checkbox" id="english" name="languages" value="English">
+        <label for="english">English</label>
+        <input type="checkbox" id="other" name="languages" value="Other">
+        <label for="other">Other</label>
+
+        <label for="description">Brief description:</label>
+        <textarea id="description" name="description" required></textarea>
+
+        <label for="price">Price in rupees:</label>
+        <input type="number" step="0.01" id="price" name="price" required>
+
+        <button type="button"onclick="submitForm()">Submit</button>
+    </form>
+  </br>
+  </br>
+         <div id="detailsContainer"></div>
+    </form>
+
+
+<!-- This is a Task 14 -->
+
+    <script>
+        function submitForm() {
+            var form = document.getElementById("bookForm");
+            var formData = new FormData(form);
+            var details = "";
+
+            for (var pair of formData.entries()) {
+                details += pair[0] + ": " + pair[1] + "<br>";
+            }
+
+            document.getElementById("detailsContainer").innerHTML = details;
+            form.reset();
+        }
+    </script>
+</body>
+</html>
